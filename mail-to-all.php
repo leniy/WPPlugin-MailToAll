@@ -1,11 +1,11 @@
 <?php
 /*
 	Plugin Name:Mail To All
-	Plugin URI: http://leniy.info/mail-to-all.html
+	Plugin URI: http://blog.leniy.info/mail-to-all.html
 	Description: 方便给某篇文章的评论用户发送订阅、通知等邮件。
 	Version: 0.0.4
 	Author: leniy
-	Author URI: http://leniy.info/
+	Author URI: http://blog.leniy.info/
 */
 
 /*
