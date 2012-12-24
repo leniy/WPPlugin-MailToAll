@@ -23,10 +23,16 @@ You can easily send subscription,notification,newsletter,etc by email to your co
 
 == Screenshots ==
 
-1. mail-to-all-screenshot1.png
-2. mail-to-all-screenshot2.png
+1. MTA-screenshot1.png
+2. MTA-screenshot2.png
 
 == Changelog ==
+
+= 1.0 =
+
+* 增加插件初始化功能，允许插件用户设置选项。可高度定制
+* 插件将一个设置页面增加为3个页面，各司其职，使插件更易用
+* 重写退订功能，减少数据库资源消耗
 
 = 0.0.4 =
 
