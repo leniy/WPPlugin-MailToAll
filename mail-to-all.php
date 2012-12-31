@@ -3,7 +3,7 @@
 	Plugin Name:Mail To All
 	Plugin URI: http://blog.leniy.info/mail-to-all.html
 	Description: 方便给某篇文章的评论用户发送订阅、通知等邮件。
-	Version: 1.0
+	Version: 1.1
 	Author: leniy
 	Author URI: http://blog.leniy.info/
 */
@@ -262,6 +262,16 @@ function MTA_about_page() {
 <h2>关于</h2>
 第一次使用此插件，请首先<a href="?page=Mail-To-All/init.php">初始化</a>
 使用过程中如有疑问，请<a href="http://blog.leniy.info/mail-to-all.html">到这儿留言提问</a>，我会尽快解答
+<h2>更新</h2>
+Changelog:<b>version:1.1</b>
+<ol>
+	<li>收件人邮箱改为私密信件，防止收件人相互看到别人的邮箱地址，保护隐私</li>
+	<li>允许发送包含HTML元素的邮件</li>
+	<li>修正readme.txt文件错误，恢复screenshot的显示</li>
+	<li>收件人编辑框直接使用换行切换收件人邮箱，换行结尾不再需要用逗号标记</li>
+</ol>
+<h2>插件相关</h2>
+<iframe frameborder="0" src="http://blog.leniy.info/mail-to-all.html" scrolling="auto" noresize="" width="100%" height="500px"></iframe>
 <?php
 }
 
@@ -331,7 +341,7 @@ function chongxinhuoquyouxiangliebiao() {
 	$queryemail = $wpdb->get_results($query);
 	$output = "";
 	foreach ($queryemail as $mail) {
-		$output = $mail->comment_author_email . ",\n" . $output;
+		$output = $mail->comment_author_email . "\n" . $output;
 //		echo $mail->comment_author_email;
 	}
 	update_option("qw_MTA_list", $output);
@@ -340,17 +350,25 @@ function chongxinhuoquyouxiangliebiao() {
 
 function fasong() {
 	$from = $_POST['qw_MTA_mail'];
-	$headers = "From: $from";
-	$to = $_POST['qw_MTA_list'];
+	$bcc = str_replace("\n", ",", $_POST['qw_MTA_list']);
+
+	$headers  = "MIME-Version: 1.0" . "\r\n";
+	$headers .= "Content-type: text/html; charset=utf-8" . "\r\n";
+	$headers .= "From: " . $from . "\r\n";
+//    $headers .= "X-Sender: " . $from . "\r\n";
+//    $headers .= "Return-Path: " . $from . "\r\n";
+	$headers .= "Bcc: " . $bcc . "\r\n";
+
 	$subject = $_POST['qw_MTA_subject'];
 	$message = $_POST['qw_MTA_content'];
 	$message .= "\n\n\n
 ---
-This was sent by admin user at " . get_option('blogname') . " (" . get_option('siteurl') . ")
+This was sent by admin user at <a href=\"" . get_option('siteurl') . "\">" . get_option('blogname') . "</a>
 You receive this email because you checked the subscribe checkbox when you leaved a comment on the website.
-To unsubscribe, just leave a comment <a href=\"" . get_option('siteurl') . "\">here</a>, with unselection of the subscribe checkbox";
+To unsubscribe, just leave a comment <a href=\"" . get_option('siteurl') . "\">here</a>, with unselection of the subscribe checkbox
+";
 	if($_POST['qw_MTA_confirm']=="YES") {
-		mail($to,$subject,$message,$headers);
+		mail("",$subject,$message,$headers);
 		echo "<div id=\"message\" class=\"mtaupdate\"><p>邮件发送成功。</p></div>";
 	}
 	else {echo "<div id=\"message\" class=\"mtaupdatefail\"><p>发送失败，您尚未确认发送</p><p>请填入“YES”确认发送。</p></div>";}
