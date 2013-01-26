@@ -3,7 +3,7 @@
 	Plugin Name:Mail To All
 	Plugin URI: http://blog.leniy.info/mail-to-all.html
 	Description: 方便给某篇文章的评论用户发送订阅、通知等邮件。
-	Version: 1.1.4
+	Version: 1.2
 	Author: leniy
 	Author URI: http://blog.leniy.info/
 */
@@ -24,10 +24,6 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
-
-global $wpdb;
-global $mat_db_name;
-$mat_db_name = $wpdb->prefix . "mta_subscribe";
 
 register_activation_hook(__FILE__, 'qw_MTA_act');
 register_deactivation_hook(__FILE__, 'qw_MTA_deact');
@@ -71,14 +67,11 @@ function MTA_init_page() {
 
 		//删除旧表
 		global $wpdb;
-		try {
-			$wpdb->query("DROP TABLE mta_subscribe");//旧版插件中的表名
-		}
-		$wpdb->query("DROP TABLE " . $mat_db_name);
+		$wpdb->query("DROP TABLE mta_subscribe");
 
 		//创建新表，位于此表的邮箱拒绝接收邮件
 		$wpdb->query("
-		CREATE TABLE IF NOT EXISTS " . $mat_db_name . " (
+		CREATE TABLE IF NOT EXISTS mta_subscribe (
 			id INT UNSIGNED NOT NULL DEFAULT NULL AUTO_INCREMENT,
 			email TEXT CHARACTER SET utf8 COLLATE utf8_general_ci,
 			PRIMARY KEY (id)
@@ -88,7 +81,7 @@ function MTA_init_page() {
 		//下拉框选F，则将当前数据库的所有评论email导入,代表其不想订阅；下拉框选T，代表订阅，则不导入，代表想订阅
 		if ($_POST['MTA_init_select']=="F") {
 			$wpdb->query("
-				INSERT INTO " . $mat_db_name . " (`email`)
+				INSERT INTO mta_subscribe (`email`)
 				SELECT DISTINCT comment_author_email
 				FROM $wpdb->comments
 			");
@@ -270,10 +263,9 @@ function MTA_about_page() {
 第一次使用此插件，请首先<a href="?page=Mail-To-All/init.php">初始化</a>
 使用过程中如有疑问，请<a href="http://blog.leniy.info/mail-to-all.html">到这儿留言提问</a>，我会尽快解答
 <h2>更新</h2>
-Changelog:<b>version:1.1.4</b>
+Changelog:<b>version:1.2</b>
 <ol>
 	<li>Use wp_mail to send Emails.In case some plugins had changed the SMTP setting.</li>
-	<li>Change Database name.</li>
 </ol>
 <h2>插件相关</h2>
 <iframe frameborder="0" src="http://blog.leniy.info/mail-to-all.html" scrolling="auto" noresize="" width="100%" height="500px"></iframe>
@@ -308,7 +300,7 @@ function chongxinhuoquyouxiangliebiao() {
 			WHERE comment_author_email NOT
 			IN (
 				SELECT DISTINCT email
-				FROM " . $mat_db_name . "
+				FROM mta_subscribe
 				)
 			";
 	}
@@ -321,7 +313,7 @@ function chongxinhuoquyouxiangliebiao() {
 			AND comment_author_email NOT 
 			IN (
 				SELECT DISTINCT email
-				FROM " . $mat_db_name . "
+				FROM mta_subscribe
 				)
 			";
 	}
@@ -413,11 +405,11 @@ function ifischecked($incoming_comment) {
 	}
 */
 	if ($_POST['MTA_subscribe_checkbox'] != 'MTA_subscribe_checkbox') { //未被勾选，表示不订阅。则邮箱放入mta_subscribe表中
-		$querytemp = "INSERT INTO " . $mat_db_name . " (`email`) VALUES (\"" . $incoming_comment['comment_author_email'] . "\")";
+		$querytemp = "INSERT INTO mta_subscribe (`email`) VALUES (\"" . $incoming_comment['comment_author_email'] . "\")";
 		$wpdb->query($querytemp);
 	}
 	else { //否则就是订阅。则数据库“不订阅区”（即表mta_subscribe）不能存在本邮箱的记录，则将其删除
-		$querytemp = "DELETE FROM `" . $mat_db_name . "` WHERE `email` LIKE \"" . $incoming_comment['comment_author_email'] . "\"";
+		$querytemp = "DELETE FROM `mta_subscribe` WHERE `email` LIKE \"" . $incoming_comment['comment_author_email'] . "\"";
 		$wpdb->query($querytemp);
 	}
 	return( $incoming_comment );

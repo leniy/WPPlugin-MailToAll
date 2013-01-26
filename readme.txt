@@ -29,10 +29,9 @@ You can easily send subscription,notification,newsletter,etc by email to your co
 
 == Changelog ==
 
-= 1.1.4 =
+= 1.2 =
 * 2013.01.26
 * Use wp_mail to send Emails.In case some plugins had changed the SMTP setting.
-* Change Database name.
 
 = 1.1 =
 * 2012.12.31
