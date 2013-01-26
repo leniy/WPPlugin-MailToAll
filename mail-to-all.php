@@ -3,7 +3,7 @@
 	Plugin Name:Mail To All
 	Plugin URI: http://blog.leniy.info/mail-to-all.html
 	Description: 方便给某篇文章的评论用户发送订阅、通知等邮件。
-	Version: 1.1.3
+	Version: 1.1.4
 	Author: leniy
 	Author URI: http://blog.leniy.info/
 */
@@ -71,7 +71,9 @@ function MTA_init_page() {
 
 		//删除旧表
 		global $wpdb;
-		try { $wpdb->query("DROP TABLE mta_subscribe");/*旧版插件中的表名*/ }
+		try {
+			$wpdb->query("DROP TABLE mta_subscribe");//旧版插件中的表名
+		}
 		$wpdb->query("DROP TABLE " . $mat_db_name);
 
 		//创建新表，位于此表的邮箱拒绝接收邮件
@@ -268,7 +270,7 @@ function MTA_about_page() {
 第一次使用此插件，请首先<a href="?page=Mail-To-All/init.php">初始化</a>
 使用过程中如有疑问，请<a href="http://blog.leniy.info/mail-to-all.html">到这儿留言提问</a>，我会尽快解答
 <h2>更新</h2>
-Changelog:<b>version:1.1.3</b>
+Changelog:<b>version:1.1.4</b>
 <ol>
 	<li>Use wp_mail to send Emails.In case some plugins had changed the SMTP setting.</li>
 	<li>Change Database name.</li>
