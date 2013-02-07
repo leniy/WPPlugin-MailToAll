@@ -29,6 +29,11 @@ You can easily send subscription,notification,newsletter,etc by email to your co
 
 == Changelog ==
 
+= 1.3 =
+* 2013.02.07
+* Fix one bug：因为后台“阅读设置”中“博客页面至多显示”的参数，使得本插件不能显示全部含评论的文章
+* 感谢用户reizhi的提醒
+
 = 1.2 =
 * 2013.01.26
 * Use wp_mail to send Emails.In case some plugins had changed the SMTP setting.

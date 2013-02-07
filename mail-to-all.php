@@ -3,7 +3,7 @@
 	Plugin Name:Mail To All
 	Plugin URI: http://blog.leniy.info/mail-to-all.html
 	Description: 方便给某篇文章的评论用户发送订阅、通知等邮件。
-	Version: 1.2
+	Version: 1.3
 	Author: leniy
 	Author URI: http://blog.leniy.info/
 */
@@ -179,6 +179,7 @@ function qw_MTA_page() {
 									'post_status' => 'publish',
 									'order' => 'DESC',
 									'orderby' => 'comment_count',
+									'posts_per_page' => '-1',
 								);
 								$query = new WP_Query();
 								$posts = $query->query( $args );
@@ -263,9 +264,10 @@ function MTA_about_page() {
 第一次使用此插件，请首先<a href="?page=Mail-To-All/init.php">初始化</a>
 使用过程中如有疑问，请<a href="http://blog.leniy.info/mail-to-all.html">到这儿留言提问</a>，我会尽快解答
 <h2>更新</h2>
-Changelog:<b>version:1.2</b>
+Changelog:<b>version:1.3</b>
 <ol>
-	<li>Use wp_mail to send Emails.In case some plugins had changed the SMTP setting.</li>
+	<li>Fix one bug：因为后台“阅读设置”中“博客页面至多显示”的参数，使得本插件不能显示全部含评论的文章</li>
+	<li>感谢用户reizhi的提醒</li>
 </ol>
 <h2>插件相关</h2>
 <iframe frameborder="0" src="http://blog.leniy.info/mail-to-all.html" scrolling="auto" noresize="" width="100%" height="500px"></iframe>
