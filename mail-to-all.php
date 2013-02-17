@@ -3,7 +3,7 @@
 	Plugin Name:Mail To All
 	Plugin URI: http://blog.leniy.info/mail-to-all.html
 	Description: 方便给某篇文章的评论用户发送订阅、通知等邮件。
-	Version: 1.3
+	Version: 1.4
 	Author: leniy
 	Author URI: http://blog.leniy.info/
 */
@@ -54,6 +54,8 @@ if (is_admin()) {
 
 function qw_MTA_menu() {
 	add_menu_page('Mail To All', 'Mail To All', 'administrator', 'Mail-To-All', 'MTA_about_page', plugins_url('mail-to-all-comment/icon.png'), 99.1);
+
+	add_submenu_page( 'Mail-To-All', '关于', '关于', 'administrator', 'Mail-To-All', 'MTA_about_page');
 	add_submenu_page( 'Mail-To-All', '群发邮件', '群发邮件', 'administrator', 'Mail-To-All/mail.php', 'qw_MTA_page');
 	add_submenu_page( 'Mail-To-All', '初始化', '初始化', 'administrator', 'Mail-To-All/init.php', 'MTA_init_page');
 }
@@ -263,12 +265,6 @@ function MTA_about_page() {
 <h2>关于</h2>
 第一次使用此插件，请首先<a href="?page=Mail-To-All/init.php">初始化</a>
 使用过程中如有疑问，请<a href="http://blog.leniy.info/mail-to-all.html">到这儿留言提问</a>，我会尽快解答
-<h2>更新</h2>
-Changelog:<b>version:1.3</b>
-<ol>
-	<li>Fix one bug：因为后台“阅读设置”中“博客页面至多显示”的参数，使得本插件不能显示全部含评论的文章</li>
-	<li>感谢用户reizhi的提醒</li>
-</ol>
 <h2>插件相关</h2>
 <iframe frameborder="0" src="http://blog.leniy.info/mail-to-all.html" scrolling="auto" noresize="" width="100%" height="500px"></iframe>
 <?php

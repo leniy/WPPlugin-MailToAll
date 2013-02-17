@@ -29,6 +29,10 @@ You can easily send subscription,notification,newsletter,etc by email to your co
 
 == Changelog ==
 
+= 1.4 =
+* 2013.02.17
+* 更改菜单显示方式
+
 = 1.3 =
 * 2013.02.07
 * Fix one bug：因为后台“阅读设置”中“博客页面至多显示”的参数，使得本插件不能显示全部含评论的文章
