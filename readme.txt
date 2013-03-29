@@ -1,6 +1,6 @@
 ﻿=== Mail To All ===
 Contributors: leniy
-Donate link: http://blog.leniy.info/
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=HAENMLDR2UMFJ&lc=US&item_name=Leniy%20Plugins%20Donation&item_number=plugin%2ddonate&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
 Tags: comments,email,subscribe,notification,newsletter,mass
 Requires at least: 3.0
 Tested up to: 3.5
