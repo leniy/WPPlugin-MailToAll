@@ -1,15 +1,15 @@
 <?php
 /*
 	Plugin Name:Mail To All
-	Plugin URI: http://blog.leniy.info/mail-to-all.html
+	Plugin URI: http://blog.leniy.org/mail-to-all.html
 	Description: 方便给某篇文章的评论用户发送订阅、通知等邮件。
-	Version: 1.4
+	Version: 1.4.1
 	Author: leniy
-	Author URI: http://blog.leniy.info/
+	Author URI: http://blog.leniy.org/
 */
 
 /*
-	Copyright 2012 Leniy (m@leniy.info)
+	Copyright 2012 Leniy (m@leniy.org)
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as 
@@ -34,7 +34,7 @@ function qw_MTA_act() {
 //	add_option("qw_MTA_notsentpost", "33");//只要用户在这篇文章中留言，则不再发送邮件至其邮箱
 	add_option("qw_MTA_subject", "我启用Mail-To-All插件了");
 	add_option("qw_MTA_mail", get_option('admin_email'));
-	add_option("qw_MTA_list", "m@leniy.info");
+	add_option("qw_MTA_list", "m@leniy.org");
 	add_option("qw_MTA_content", "欢迎使用本插件");
 }
 
@@ -264,9 +264,9 @@ function MTA_about_page() {
 ?>
 <h2>关于</h2>
 第一次使用此插件，请首先<a href="?page=Mail-To-All/init.php">初始化</a>
-使用过程中如有疑问，请<a href="http://blog.leniy.info/mail-to-all.html">到这儿留言提问</a>，我会尽快解答
+使用过程中如有疑问，请<a href="http://blog.leniy.org/mail-to-all.html">到这儿留言提问</a>，我会尽快解答
 <h2>插件相关</h2>
-<iframe frameborder="0" src="http://blog.leniy.info/mail-to-all.html" scrolling="auto" noresize="" width="100%" height="500px"></iframe>
+<iframe frameborder="0" src="http://blog.leniy.org/mail-to-all.html" scrolling="auto" noresize="" width="100%" height="500px"></iframe>
 <?php
 }
 
