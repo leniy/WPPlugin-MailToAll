@@ -1,6 +1,6 @@
 ﻿=== Mail To All ===
 Contributors: leniy
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=HAENMLDR2UMFJ&lc=US&item_name=Leniy%20Plugins%20Donation&item_number=plugin%2ddonate&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
+Donate link: http://blog.leniy.org
 Tags: comments,email,subscribe,notification,newsletter,mass
 Requires at least: 3.0
 Tested up to: 3.5
@@ -15,7 +15,8 @@ You can easily send subscription,notification,newsletter,etc by email to your co
 You can easily send subscription,notification,newsletter,etc by email to your comments users under one post.
 方便给某篇文章的评论用户发送订阅、通知等邮件。
 
-[DEMO](http://blog.leniy.org/mail-to-all.html)
+DEMO:[Leniy](http://blog.leniy.org/mail-to-all.html "示例页面")
+[Donate link](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=HAENMLDR2UMFJ&lc=US&item_name=Leniy%20Plugins%20Donation&item_number=plugin%2ddonate&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted)
 
 == Installation ==
 
