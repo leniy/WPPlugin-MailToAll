@@ -3,27 +3,12 @@
 	Plugin Name:Mail To All
 	Plugin URI: http://blog.leniy.org/mail-to-all.html
 	Description: 方便给某篇文章的评论用户发送订阅、通知等邮件。
-	Version: 1.4.1
+	Version: 1.5.0
 	Author: leniy
 	Author URI: http://blog.leniy.org/
 */
 
-/*
-	Copyright 2012 Leniy (m@leniy.org)
-
-	This program is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License, version 2, as 
-	published by the Free Software Foundation.
-
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
-
-	You should have received a copy of the GNU General Public License
-	along with this program; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
+//require_once(plugin_dir_path( __FILE__ ).'/inc/leniy_admin_menu.php');
 
 register_activation_hook(__FILE__, 'qw_MTA_act');
 register_deactivation_hook(__FILE__, 'qw_MTA_deact');
