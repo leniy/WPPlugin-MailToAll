@@ -3,7 +3,7 @@
 	Plugin Name:Mail To All
 	Plugin URI: http://blog.leniy.org/mail-to-all.html
 	Description: 方便给某篇文章的评论用户发送订阅、通知等邮件。
-	Version: 1.5.0
+	Version: 1.5.1
 	Author: leniy
 	Author URI: http://blog.leniy.org/
 */
