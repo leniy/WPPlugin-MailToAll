@@ -1,0 +1,3 @@
+[submodule "mail-to-all-comment/mail-to-all-comment/inc"]
+	path = mail-to-all-comment/mail-to-all-comment/inc
+	url = git@github.com:leniy/WPPlugin-LeniyInc.git
